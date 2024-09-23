@@ -1,6 +1,6 @@
 
 
-const MostRecent = () => {
+const Minicards = () => {
   return (
     <div className="h-[110px] border-b-2 sm:w-[300px]">
       <div className="h-full flex flex-col items-start gap-4">
@@ -11,4 +11,4 @@ const MostRecent = () => {
   )
 }
 
-export default MostRecent;
+export default Minicards;
