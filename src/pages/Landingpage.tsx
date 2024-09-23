@@ -4,6 +4,7 @@ import Minicards from '../components/Minicards';
 import MiniCards2 from '../components/MiniCards2';
 import BigStory from '../components/BigStory';
 import BlogCards from '../components/BlogCards';
+import Footer from '../components/Footer';
 
 const Landingpage = () => {
   return (
@@ -72,8 +73,33 @@ const Landingpage = () => {
                 <BlogCards/>
               </div>
           </div>
-  
+
+          {/* section 5 */}
+          <div className='mt-10'>
+              <div className='bg-black px-4 py-1 uppercase text-sm text-white'>Security</div>
+              <div className='flex flex-wrap md:flex-nowrap gap-8 mt-6'>
+                <BlogCards/>
+                <BlogCards/>
+                <BlogCards/>
+                <BlogCards/>
+              </div>
+          </div>
+
+          {/* section 6 */}
+          <div className='mt-10'>
+              <div className='bg-black px-4 py-1 uppercase text-sm text-white'>Gear</div>
+              <div className='flex flex-wrap md:flex-nowrap gap-8 mt-6'>
+                <BlogCards/>
+                <BlogCards/>
+                <BlogCards/>
+                <BlogCards/>
+              </div>
+          </div>
+
         </div>
+      </div>
+      <div>
+        <Footer/>
       </div>
     </div>
   )
