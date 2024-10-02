@@ -8,10 +8,9 @@ import Footer from '../components/Footer';
 
 const Landingpage = () => {
   return (
-    <div className='min-h-[100vh] font-lora'>
-      <Navbar/>
+    <div>
       {/* Layout */}
-      <div className='flex justify-center items-center flex-col p-6'>
+      <div className='flex justify-center items-center flex-col pad'>
         <div>
           <div className='md:flex md:flex-col md:gap-4 lg:flex-row'>
             {/* Section one */}
@@ -97,9 +96,6 @@ const Landingpage = () => {
           </div>
 
         </div>
-      </div>
-      <div>
-        <Footer/>
       </div>
     </div>
   )

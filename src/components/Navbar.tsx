@@ -4,6 +4,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import SearchIcon from '@mui/icons-material/Search';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -24,13 +25,13 @@ const Navbar = () => {
         </div>
         {/* Navbar */}
         <div className='hidden sm:flex sm:justify-between sm:border-b sm:h-[45px] sm:px-6 sm:w-full'>
-            <ul className='flex justify-between gap-6 h-full'>
-              <li className='flex items-center justify-center hover:bg-active hover:text-white h-full text-center px-4 cursor-pointer'>Home</li>
-              <li className='flex items-center justify-center hover:bg-active hover:text-white h-full text-center px-4 cursor-pointer'>Business</li>
-              <li className='flex items-center justify-center hover:bg-active hover:text-white h-full text-center px-4 cursor-pointer'>Technology</li>
-              <li className='flex items-center justify-center hover:bg-active hover:text-white h-full text-center px-4 cursor-pointer'>Sports</li>
-              <li className='flex items-center justify-center hover:bg-active hover:text-white h-full text-center px-4 cursor-pointer'>Global</li>
-            </ul>
+            <div className='flex justify-between gap-6 h-full'>
+              <NavLink to="/" className='flex items-center justify-center hover:bg-active hover:text-white h-full text-center px-4 cursor-pointer'>Home</NavLink>
+              <NavLink to="/technology" className='flex items-center justify-center hover:bg-active hover:text-white h-full text-center px-4 cursor-pointer'>Business</NavLink>
+              <NavLink to="/business" className='flex items-center justify-center hover:bg-active hover:text-white h-full text-center px-4 cursor-pointer'>Technology</NavLink>
+              <NavLink to="/sport" className='flex items-center justify-center hover:bg-active hover:text-white h-full text-center px-4 cursor-pointer'>Sports</NavLink>
+              <NavLink to="/global" className='flex items-center justify-center hover:bg-active hover:text-white h-full text-center px-4 cursor-pointer'>Global</NavLink>
+            </div>
             <div className='flex items-center justify-center'>
               <SearchIcon />
             </div>
