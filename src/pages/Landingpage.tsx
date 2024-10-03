@@ -9,7 +9,8 @@ import { useEffect } from 'react';
 
 
 const Landingpage = () => {
-  const globalUpdate = useAppSelector(state => state.blogs.global);
+  const globalUpdate = useAppSelector(state => state.blogs.technology);
+  const theBigOne = globalUpdate[0]
   
   return (
     <div>
@@ -22,23 +23,22 @@ const Landingpage = () => {
                 <div className='bg-black px-4 py-1 uppercase text-sm text-white'>Today's Picks</div>
                 <div className='md:hidden'>
                   <div className='flex-col gap-6 flex-wrap'>
-                    {/* <BlogComponent/>
-                    <BlogComponent/>
-                    <BlogComponent/> */}
+                    {globalUpdate.length ? (globalUpdate.slice(0,3)).map((blog, index) => 
+                      <div><BlogComponent blog={blog} key={index}/></div>
+                    ) 
+                    : (<p>No content to display</p>)
+                    }
                   </div>
                 </div>
                 <div className='hidden md:flex md:gap-6'>
                     <div className='md:flex md:flex-col md:gap-6'>
-                      {/* <div><BlogComponent mdWidth mdText/></div>
-                      <div><BlogComponent mdWidth mdText/></div> */}
+                      {globalUpdate.length ? (globalUpdate.slice(0,2).map((blog, index) => 
+                          <div><BlogComponent mdWidth mdText blog={blog} key={index}/></div>))
+                        : (<p>No content to display</p>)
+                      }
                     </div>
                     <div>
-                      {globalUpdate.length?  
-                      globalUpdate.map((blog, index) => (
-                        <BlogComponent key={index} blog={blog} />
-                      ))
-                      : 
-                      <p>No Content to display</p>}
+                      <BlogComponent blog={theBigOne}/>
                     </div>
                 </div>
             </div>
@@ -47,10 +47,10 @@ const Landingpage = () => {
             <div className='flex flex-col gap-6 flex-wrap mt-16 lg:mt-0'>
               <div className='bg-black px-4 py-1 uppercase text-sm text-white'>Most recent</div>
               <div className='flex flex-wrap gap-6 lg:flex-col'>
-                <Minicards/>
-                <Minicards/>
-                <Minicards/>
-                <Minicards/>
+                {globalUpdate.length? (globalUpdate.slice(0,4).map((blog,index) => 
+                <Minicards key={index} blog={blog}/>  
+              ))
+                : (<p>No content to be displayed</p>)}
               </div>
             </div>
           </div>
@@ -89,7 +89,7 @@ const Landingpage = () => {
               </div>
           </div>
 
-          {/* section 6 */}
+          {/* section 6
           <div className='mt-10'>
               <div className='bg-black px-4 py-1 uppercase text-sm text-white'>Gear</div>
               <div className='flex flex-wrap md:flex-nowrap gap-8 mt-6'>
@@ -98,7 +98,7 @@ const Landingpage = () => {
                 <BlogCards/>
                 <BlogCards/>
               </div>
-          </div>
+          </div> */}
 
         </div>
       </div>
