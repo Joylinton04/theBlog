@@ -4,9 +4,13 @@ import Minicards from '../components/Minicards';
 import MiniCards2 from '../components/MiniCards2';
 import BigStory from '../components/BigStory';
 import BlogCards from '../components/BlogCards';
-import Footer from '../components/Footer';
+import { useAppSelector } from '../store/store';
+import { useEffect } from 'react';
+
 
 const Landingpage = () => {
+  const globalUpdate = useAppSelector(state => state.blogs.global);
+  
   return (
     <div>
       {/* Layout */}
@@ -18,23 +22,24 @@ const Landingpage = () => {
                 <div className='bg-black px-4 py-1 uppercase text-sm text-white'>Today's Picks</div>
                 <div className='md:hidden'>
                   <div className='flex-col gap-6 flex-wrap'>
+                    {/* <BlogComponent/>
                     <BlogComponent/>
-                    <BlogComponent/>
-                    <BlogComponent/>
+                    <BlogComponent/> */}
                   </div>
                 </div>
                 <div className='hidden md:flex md:gap-6'>
-                  {/* <div>
-                    <BlogComponent/>
-                    <BlogComponent/>
-                  </div> */}
-                  <div className='md:flex md:flex-col md:gap-6'>
-                    <div><BlogComponent mdWidth mdText/></div>
-                    <div><BlogComponent mdWidth mdText/></div>
-                  </div>
-                  <div>
-                    <BlogComponent/>
-                  </div>
+                    <div className='md:flex md:flex-col md:gap-6'>
+                      {/* <div><BlogComponent mdWidth mdText/></div>
+                      <div><BlogComponent mdWidth mdText/></div> */}
+                    </div>
+                    <div>
+                      {globalUpdate.length?  
+                      globalUpdate.map((blog, index) => (
+                        <BlogComponent key={index} blog={blog} />
+                      ))
+                      : 
+                      <p>No Content to display</p>}
+                    </div>
                 </div>
             </div>
             
