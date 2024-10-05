@@ -17,12 +17,14 @@ interface BlogState {
     allBlogs: Blog[];
     technology: Blog[];
     global: Blog[];
+    todaysPick: Blog[];
 }
 
 const initialState: BlogState = {
     allBlogs: blogs,
     technology: blogs.filter(blog => blog.category === "Technology"),
     global: blogs.filter(blog => blog.category === "Global"),
+    todaysPick: blogs.filter(blog => blog.category === "todays Pick"),
 };
 
 export const blogSlice = createSlice({

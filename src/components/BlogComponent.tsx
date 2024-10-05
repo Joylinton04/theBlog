@@ -27,13 +27,13 @@ const BlogComponent = ({mdWidth, mmdWidth, mdText, blog}:sizeProps) => {
   // const mmdWidth: String = ;
 
   return (
-    <div className={`h-[600px] md:h-full ${isWidth } lg:max-w-[800px]` }>{/* {/* min-w-[450px] */} 
+    <div className={`h-[600px] md:h-full ${isWidth } h-full lg:max-w-[800px]` }>{/* {/* min-w-[450px] */} 
       <div className="h-full flex flex-col gap-4">
         <div className="max-h-[430px]">
-            <img src={img1} className='h-full w-full object-cover object-center' />
+            <img src={blog.image} className='h-full w-full object-cover object-center' />
         </div>
         <p className='uppercase font-medium hover:underline cursor-pointer'>{blog.slug}</p>
-        <div className={`capitalize w-[95%] text-4xl font-Blogtitle font-bold ${isTextSize}`}>
+        <div className={`capitalize w-[95%] text-4xl font-Blogtitle font-bold hover:underline cursor-pointer ${isTextSize}`}>
           {blog.title}
         </div>
         <div className={`${isText}`}>

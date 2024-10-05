@@ -1,12 +1,27 @@
-import img from '../assets/img1.jpg'
+import img from '../assets/hurricane.webp'
 
-const MiniCards2 = () => {
+interface blog {
+  id: number;
+  title: string;
+  slug: string;
+  content: string;
+  date: Date;
+  author: string;
+  image: string;
+  category: string;
+}
+
+interface blogProp {
+  blog?: blog
+}
+
+const MiniCards2 = ({blog}:blogProp) => {
   return (
     <div>
       <div className='flex items-center justify-between border-b-2 gap-2 pb-4 md:w-[300px] lg:w-[350px]'>
-        <div className='w-[80%]'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel accusantium illum pariatur odit</div>
+        <div className='w-[80%] hover:underline cursor-pointer font-medium'>{blog?.title}</div>
         <div className='w-[130px] h-[110px]'>
-          <img src={img} className='h-full w-full object-cover object-center' />
+          <img src={blog?.image} className='h-full w-full object-cover object-center' />
         </div>
       </div>
     </div>
