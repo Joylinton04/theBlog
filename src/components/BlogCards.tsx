@@ -1,7 +1,6 @@
-import img from '../assets/hurricane.webp'
 
 interface blog {
-  id: number;
+  id: string;
   title: string;
   slug: string;
   content: string;
@@ -24,7 +23,7 @@ const BlogCards = ({blog}:blogProp) => {
             <div className='uppercase font-semibold text-sm'>{blog?.author}</div>
         </div>
         <div className='h-[75px] w-[120px] md:w-full md:h-[160px]'>
-            <img src={img} className='w-full h-full object-cover object-center' />
+            <img src={blog?.image} className='w-full h-full object-cover object-center' />
         </div>
     </div>
   )

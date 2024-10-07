@@ -8,12 +8,17 @@ import { useAppSelector } from '../store/store';
 
 
 const Landingpage = () => {
+  const allBlogs = useAppSelector(state => state.blogs.allBlogs);
   const techUpdate = useAppSelector(state => state.blogs.technology);
   const todaysPick = useAppSelector(state => state.blogs.todaysPick);
   const globalUpdate = useAppSelector(state => state.blogs.global);
-  const update = useAppSelector(state => state.blogs.allBlogs.filter(blog => blog.category === "Global"));
-  const theBigOne = techUpdate[0]
-  const bigToday = todaysPick[2]
+  // const update = useAppSelector(state => state.blogs.allBlogs.technology)
+  const mostRecent = useAppSelector(state => state.blogs.mostRecent)
+  console.log(mostRecent)
+  const theBigOne = techUpdate.length > 0 ? techUpdate[0] : null;
+  const bigToday = todaysPick.length > 2 ? todaysPick[2] : null;
+
+
 
   
   return (
@@ -42,7 +47,12 @@ const Landingpage = () => {
                       }
                     </div>
                     <div>
-                      <BlogComponent blog={bigToday}/>
+                    {bigToday ? (
+                        <BlogComponent blog={bigToday} />
+                      ) : (
+                        <p>No content available for today's pick</p>
+                      )
+                    }
                     </div>
                 </div>
             </div>
@@ -51,7 +61,7 @@ const Landingpage = () => {
             <div className='flex flex-col gap-6 flex-wrap mt-16 lg:mt-0'>
               <div className='bg-black px-4 py-1 uppercase text-sm text-white'>Most recent</div>
               <div className='flex flex-wrap gap-6 lg:flex-col'>
-                {techUpdate.length? (techUpdate.slice(0,4).map((blog) => 
+                {mostRecent.length? (mostRecent.slice(0,4).map((blog) => 
                 <Minicards key={blog.id} blog={blog}/>  
               ))
                 : (<p>No content to be displayed</p>)}
@@ -62,9 +72,14 @@ const Landingpage = () => {
           {/* section 3 */}
           <div className='flex flex-col gap-4 mt-10'>
               <div className='bg-black px-4 py-1 uppercase text-sm text-white'>The big story</div>
-              <div><BigStory blog={theBigOne}/></div>
+              { theBigOne ?
+                <div><BigStory blog={theBigOne}/></div>
+                : (
+                  <p>No content available for the big story</p>
+                )
+              }
               <div className='flex flex-wrap md:justify-between gap-6 mt-8'>
-                {update.length? update.slice(0,3).map((blog) => 
+                {techUpdate.length? techUpdate.slice(0,4).map((blog) => 
                   <MiniCards2 key={blog.id} blog={blog}/>) 
                   : <p>No content to display</p>
                 }
@@ -75,7 +90,7 @@ const Landingpage = () => {
           <div className='mt-10'>
               <div className='bg-black px-4 py-1 uppercase text-sm text-white'>technology</div>
               <div className='flex flex-wrap md:flex-nowrap gap-8 mt-6'>
-                {update.length? update.slice(0,4).map((blog) => 
+                {techUpdate.length? techUpdate.slice(0,4).map((blog) => 
                   <BlogCards key={blog.id} blog={blog}/>) 
                   : <p>No content to display</p>
                 }

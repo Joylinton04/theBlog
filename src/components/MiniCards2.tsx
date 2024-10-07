@@ -1,7 +1,7 @@
 import img from '../assets/hurricane.webp'
 
 interface blog {
-  id: number;
+  id: string;
   title: string;
   slug: string;
   content: string;

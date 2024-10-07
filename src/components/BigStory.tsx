@@ -1,6 +1,6 @@
 import img1 from '../assets/cybertruck.webp'
 interface Blog {
-  id: number;
+  id: string;
   title: string;
   slug: string;
   content: string;
