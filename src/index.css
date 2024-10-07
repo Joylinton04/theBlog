@@ -7,9 +7,6 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  overscroll-behavior: none;
-}
 
 body {
   background-color: #f9f9f9f9;
