@@ -1,10 +1,11 @@
+import { Link } from 'react-router-dom';
 import img1 from '../assets/cybertruck.webp'
 interface Blog {
   id: string;
   title: string;
   slug: string;
   content: string;
-  date: Date;
+  date: string;
   author: string;
   image: string;
   category: string;
@@ -19,7 +20,7 @@ const BigStory = ({ blog }:blogProp) => {
 
   return (
     <div className='h-[600px] md:h-full'>{/* {/* min-w-[450px] */} 
-      <div className="h-full flex flex-col gap-12 lg:flex-row">
+      <Link to={`/postpage/${blog?.id}`} className="h-full flex flex-col gap-12 lg:flex-row">
         <div className="h-[45%] lg:h-[420px] lg:max-w-[1200px]">
             <img src={blog.image} className='h-full w-full object-cover object-center' />
         </div>
@@ -33,7 +34,7 @@ const BigStory = ({ blog }:blogProp) => {
           </div>
           <h2 className='uppercase font-medium text-sm'>{blog.author}</h2>
         </div>
-      </div>
+      </Link>
     </div>
   )
 }

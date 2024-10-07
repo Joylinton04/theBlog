@@ -13,7 +13,7 @@ const router = createBrowserRouter([
                 element: <Landingpage/>
             },
             {
-                path: 'postpage',
+                path: 'postpage/:id',
                 element: <PostPage/>
             }
         ]

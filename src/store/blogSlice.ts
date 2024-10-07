@@ -1,16 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { blogs } from "./data";
 
-export interface Blog {
+interface Blog {
     id: string;
     title: string;
     slug: string;
     content: string;
-    date: Date;
+    date: string;
     author: string;
     image: string;
     category: string;
-    // tags: string[];
 }
 
 interface BlogState {
@@ -26,8 +25,8 @@ const initialState: BlogState = {
     technology: blogs.filter(blog => blog.category === "Technology"),
     global: blogs.filter(blog => blog.category === "Global"),
     todaysPick: blogs.filter(blog => blog.category === "todays Pick"),
-    mostRecent: blogs.slice().sort((a, b) => a.date.getTime() - b.date.getTime()).slice(0, 4)
-};
+    mostRecent: blogs.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 3),
+}
 
 export const blogSlice = createSlice({
     name: "blog",

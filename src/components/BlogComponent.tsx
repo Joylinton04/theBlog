@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import img1 from '../assets/cybertruck.webp'
 
 interface blog {
@@ -5,7 +6,7 @@ interface blog {
   title: string;
   slug: string;
   content: string;
-  date: Date;
+  date: string;
   author: string;
   image: string;
   category: string;
@@ -24,11 +25,11 @@ const BlogComponent = ({mdWidth, mmdWidth, mdText, blog}:sizeProps) => {
   const isWidth: string = mdWidth ? "md:w-[200px]" : "md:";
   const isText: string = mdText ? "md:hidden" : ""
   const isTextSize: string = mdText ? "md:text-2xl md:font-medium" : "";
-  // const mmdWidth: String = ;
+
 
   return (
-    <div className={`h-[600px] md:h-full ${isWidth } h-full lg:max-w-[800px]` }>{/* {/* min-w-[450px] */} 
-      <div className="h-full flex flex-col gap-4">
+    <div className={`h-[600px] md:h-full ${isWidth } h-full lg:max-w-[800px]` }> 
+      <Link to={`postpage/${blog.id}`} className="h-full flex flex-col gap-4">
         <div className="max-h-[430px]">
             <img src={blog.image} className='h-full w-full object-cover object-center' />
         </div>
@@ -40,7 +41,7 @@ const BlogComponent = ({mdWidth, mmdWidth, mdText, blog}:sizeProps) => {
             {blog.content.slice(0,210) + '...'}
         </div>
         <h2 className='uppercase font-medium text-sm'>{blog.author}</h2>
-      </div>
+      </Link>
     </div>
   )
 }
