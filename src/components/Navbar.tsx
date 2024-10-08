@@ -28,9 +28,9 @@ const Navbar = () => {
             <div className='flex justify-between gap-6 h-full'>
               <NavLink to="/" className='flex items-center justify-center hover:bg-active hover:text-white h-full text-center px-4 cursor-pointer'>Home</NavLink>
               <NavLink to="/technology" className='flex items-center justify-center hover:bg-active hover:text-white h-full text-center px-4 cursor-pointer'>Gear</NavLink>
-              <NavLink to="/business" className='flex items-center justify-center hover:bg-active hover:text-white h-full text-center px-4 cursor-pointer'>Technology</NavLink>
-              <NavLink to="/sport" className='flex items-center justify-center hover:bg-active hover:text-white h-full text-center px-4 cursor-pointer'>Sports</NavLink>
-              <NavLink to="/global" className='flex items-center justify-center hover:bg-active hover:text-white h-full text-center px-4 cursor-pointer'>Global</NavLink>
+              <div className='flex items-center justify-center hover:bg-active hover:text-white h-full text-center px-4 cursor-pointer'><a href="#technology">Technology</a></div>
+              <div className='flex items-center justify-center hover:bg-active hover:text-white h-full text-center px-4 cursor-pointer'>Sports</div>
+              <div className='flex items-center justify-center hover:bg-active hover:text-white h-full text-center px-4 cursor-pointer'><a href="#global">Global</a></div>
             </div>
             <div className='flex items-center justify-center'>
               <SearchIcon />

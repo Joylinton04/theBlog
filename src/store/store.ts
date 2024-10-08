@@ -37,4 +37,4 @@ const store = configureStore({
 export const useAppDispatch = () => useDispatch<typeof store.dispatch>();
 export const useAppSelector:TypedUseSelectorHook<ReturnType<typeof store.getState>> = useSelector;
 export default store
-export let persistor = persistStore(store)
+export const persistor = persistStore(store)

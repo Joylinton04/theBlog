@@ -7,6 +7,11 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 150px;
+}
+
 
 body {
   background-color: #f9f9f9f9;
