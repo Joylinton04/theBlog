@@ -1,5 +1,6 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import blogSlice from "./blogSlice";
+import authSlice from "./authSlice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import {
     persistStore,
@@ -20,12 +21,15 @@ const persistConfig = {
   storage,
 }
 
-const persistedReducer = persistReducer(persistConfig, blogSlice)
+const rootReducer = combineReducers({
+  blogs: blogSlice,
+  auth: authSlice 
+})
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 const store = configureStore({
-    reducer: {
-        blogs: persistedReducer,
-    },
+    reducer: persistedReducer,
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
           serializableCheck: {
