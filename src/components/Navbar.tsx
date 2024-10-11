@@ -7,12 +7,23 @@ import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import { NavLink,Link } from 'react-router-dom';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { logout } from '../store/authSlice';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLogout, setIsLogout] = useState(false);
+  const dispatch = useDispatch()
 
   const handleMenuToggle = () => {
     setIsMenuOpen(prev => !prev)
+  }
+  const toggleLogout = () => {
+    setIsLogout(prev => !prev);
+  }
+
+  const handleLogOut = () => {
+    dispatch(logout());
   }
 
   return (
@@ -48,8 +59,24 @@ const Navbar = () => {
             </div>
             }
 
+            {/* Logout */}
+            <div className='bg-[#2E6697] text-[#f9f9f9f9] px-[0.5rem] py-1 rounded-sm text-xs cursor-pointer' onClick={() => toggleLogout()}>LOGOUT</div>
+            {
+              isLogout &&
+              <div className='fixed top-0 left-0 z-20 w-full h-full bg-[#21212190]'>
+                <div className="flex justify-center items-center h-full">
+                  <div className='bg-white w-[350px] pad flex flex-col gap-3'>
+                    <h1 className='text-lg'>Are you sure you want to logout ?</h1>
+                    <div className='flex justify-between'>
+                      <button className='uppercase px-6 py-2 text-sm bg-red-500 text-white' onClick={()=>handleLogOut()}>Logout</button>
+                      <button className='uppercase px-6 py-2 text-sm bg-[#0096ff] text-white' onClick={() => toggleLogout()}>Cancel</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            }
 
-            <div className='bg-[#2E6697] text-[#f9f9f9f9] px-[0.5rem] py-1 rounded-sm text-xs'>SUBSCRIBE</div>
+
         </div>
         {/* Navbar */}
         <div className='hidden sm:flex sm:justify-between sm:border-b sm:h-[45px] sm:px-6 sm:w-full'>

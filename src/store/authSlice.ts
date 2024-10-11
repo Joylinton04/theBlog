@@ -11,6 +11,7 @@ interface user {
 
 interface AuthState {
     isAuthenticated: boolean;
+    hasAccount: boolean;
     currentUser: user | null;
     users: user[];
 }
@@ -18,6 +19,7 @@ interface AuthState {
 
 const initialState:AuthState = {
     isAuthenticated: false,
+    hasAccount: false,
     currentUser: null,
     users:Users
 }
@@ -33,15 +35,17 @@ export const authSlice = createSlice({
                 state.isAuthenticated = true
                 state.currentUser = foundUser
             } else {
-                //
+                state.hasAccount = false
             }
         },
-        signUp(state, action: PayloadAction<{ name: string; password: string }>) {
-            const { name, password } = action.payload
-            const foundUser = state.users.find(user => user.name === name && user.password === password)
+        signUp(state, action: PayloadAction<{ name: string; email:string; password: string }>) {
+            const { name, email, password } = action.payload
+            const foundUser = state.users.find(user => user.name === name && user.password === password && user.name === email)
                 if(!foundUser) {
                     state.users.push(action.payload)
                     state.isAuthenticated = true
+                } else {
+                    state.hasAccount = true
                 }
         },
         logout(state) {
@@ -52,4 +56,4 @@ export const authSlice = createSlice({
 })
 
 export default authSlice.reducer
-export const {login, logout} = authSlice.actions
+export const {login, logout, signUp} = authSlice.actions
