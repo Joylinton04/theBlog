@@ -7,7 +7,6 @@ import { useAppSelector } from '../store/store';
 
 
 const Landingpage = () => {
-  const users = useAppSelector(state => state.auth.users);
   const techUpdate = useAppSelector(state => state.blogs.technology);
   const todaysPick = useAppSelector(state => state.blogs.todaysPick);
   const globalUpdate = useAppSelector(state => state.blogs.global);
@@ -15,7 +14,6 @@ const Landingpage = () => {
   const theBigOne = techUpdate.length > 0 ? techUpdate[0] : null;
   const bigToday = todaysPick.length > 2 ? todaysPick[2] : null;
 
-  console.log(users)
 
   
   return (

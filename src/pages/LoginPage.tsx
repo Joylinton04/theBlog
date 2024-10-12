@@ -9,6 +9,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [signUp, setSignUp] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   // const users = useAppSelector(state => state.auth.users)
@@ -16,8 +17,12 @@ const LoginPage = () => {
   const hasAccount = useAppSelector(state => state.auth.hasAccount)
 
   const handleLogin = (e: React.FormEvent) => {
+    setIsLoading(prev => !prev);
     e.preventDefault();
-    dispatch(login({ name: username, password:password }))
+    setTimeout(() => {
+      dispatch(login({ name: username, password:password }))
+      setIsLoading(false);
+    },2000)
   };
 
   const toggleSignup = ():void => {
@@ -26,7 +31,12 @@ const LoginPage = () => {
 
   const handleSignUp = (e:React.FormEvent) => {
     e.preventDefault();
-    dispatch(SignUp({ name: username, email: email, password: password }))
+    setIsLoading(prev => !prev);
+    
+    setTimeout(() => {
+      dispatch(SignUp({ name: username, email: email, password: password }))
+      setIsLoading(false);
+    },2000)
   }
 
   useEffect(() => {
@@ -129,6 +139,18 @@ const LoginPage = () => {
         </form>
         <img src={loginImg} alt="" className={`w-[460px] min-h-[450px] object-cover object-center ${signUp ? 'lg:-translate-x-[100%]' : ''} duration-500`}/>
       </div>
+      {isLoading && 
+            <div className='fixed top-0 left-0 z-20 w-full h-full bg-[#21212190]'>
+              <div className='flex justify-center items-center h-full w-full px-4 ssm:p-2'>
+                <div className='bg-white w-[200px] h-[200px] p-2 flex justify-center items-center rounded'>
+                  <div className='flex flex-col items-center gap-6'>
+                    <div className="loader2"></div>
+                    <div>Please Wait...</div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        }
     </div>
   );
 };

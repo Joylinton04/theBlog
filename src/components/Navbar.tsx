@@ -5,15 +5,20 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
-import { NavLink,Link } from 'react-router-dom';
+import { NavLink,Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logout } from '../store/authSlice';
+import { useAppSelector } from '../store/store';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLogout, setIsLogout] = useState(false);
+  const [notAdmin, setNotAdmin] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const isAdmin = useAppSelector(state => state.auth.currentUser?.isAdmin);
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const handleMenuToggle = () => {
     setIsMenuOpen(prev => !prev)
@@ -23,7 +28,22 @@ const Navbar = () => {
   }
 
   const handleLogOut = () => {
-    dispatch(logout());
+    setIsLoading(prev => !prev);
+    setTimeout(() => {
+      dispatch(logout());
+      setIsLoading(prev => !prev);
+    },2000)
+  }
+
+  const handlePostblog = () => {
+    setIsLoading(prev => !prev);
+    setTimeout(() => {
+        isAdmin ? 
+        navigate('/newpostpage')
+      : setNotAdmin(true);
+
+      setIsLoading(false);
+    },2000)
   }
 
   return (
@@ -59,22 +79,56 @@ const Navbar = () => {
             </div>
             }
 
-            {/* Logout */}
-            <div className='bg-[#2E6697] text-[#f9f9f9f9] px-[0.5rem] py-1 rounded-sm text-xs cursor-pointer' onClick={() => toggleLogout()}>LOGOUT</div>
+            <div className='flex gap-4'>
+              {/* Post a blog for admins only */}
+            <div className='bg-[#2E6697] uppercase text-[#f9f9f9f9] px-[1rem] py-2 rounded-sm text-xs cursor-pointer' onClick={() => handlePostblog()}>Post a Blog</div>
             {
-              isLogout &&
-              <div className='fixed top-0 left-0 z-20 w-full h-full bg-[#21212190]'>
-                <div className="flex justify-center items-center h-full">
-                  <div className='bg-white w-[350px] pad flex flex-col gap-3'>
-                    <h1 className='text-lg'>Are you sure you want to logout ?</h1>
-                    <div className='flex justify-between'>
-                      <button className='uppercase px-6 py-2 text-sm bg-red-500 text-white' onClick={()=>handleLogOut()}>Logout</button>
-                      <button className='uppercase px-6 py-2 text-sm bg-[#0096ff] text-white' onClick={() => toggleLogout()}>Cancel</button>
+                notAdmin &&
+                <div className='fixed top-0 left-0 z-20 w-full h-full bg-[#21212190]'>
+                  <div className="flex justify-center items-center h-full">
+                    <div className='bg-white w-[400px] p-6 flex flex-col gap-3'>
+                      <h1 className='text-lg font-bold text-center'>Only Admins are allowed to post a blog</h1>
+                      <div className='grid place-content-center'>
+                        <button className='uppercase px-6 py-2 text-sm bg-[#0096ff] text-white' onClick={()=>setNotAdmin(prev => !prev)}>Ok</button>
+                      </div>
                     </div>
                   </div>
+              </div>
+              }
+
+              {/* Logout */}
+              <div className='bg-red-500 text-[#f9f9f9f9] px-[1rem] py-2 rounded-sm text-xs cursor-pointer' onClick={() => toggleLogout()}>LOGOUT</div>
+              {
+                isLogout &&
+                <div className='fixed top-0 left-0 z-20 w-full h-full bg-[#21212190]'>
+                  <div className="flex justify-center items-center h-full">
+                    <div className='bg-white w-[350px] pad flex flex-col gap-3'>
+                      <h1 className='text-lg'>Are you sure you want to logout ?</h1>
+                      <div className='flex justify-between'>
+                        <button className='uppercase px-6 py-2 text-sm bg-red-500 text-white' onClick={()=>handleLogOut()}>Logout</button>
+                        <button className='uppercase px-6 py-2 text-sm bg-[#0096ff] text-white' onClick={() => toggleLogout()}>Cancel</button>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              }
+               {isLoading && 
+            <div className='fixed top-0 left-0 z-20 w-full h-full bg-[#21212190]'>
+              <div className='flex justify-center items-center h-full w-full px-4 ssm:p-2'>
+                <div className='bg-white w-[200px] h-[200px] p-2 flex justify-center items-center rounded'>
+                  <div className='flex flex-col items-center gap-6'>
+                    <div className="loader"></div>
+                    <div>Please Wait...</div>
+                  </div>
                 </div>
+              </div>
+          </div>
+        }
+
+
             </div>
-            }
+
+
 
 
         </div>

@@ -5,6 +5,7 @@ interface user {
     name: string | null;
     email: string | null;
     password: string | null;
+    isAdmin?: boolean;
 }
 
 interface AuthState {
