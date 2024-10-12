@@ -13,6 +13,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
   // const users = useAppSelector(state => state.auth.users)
   const isAuthenticated = useAppSelector(state => state.auth.isAuthenticated)
+  const hasAccount = useAppSelector(state => state.auth.hasAccount)
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -61,6 +62,9 @@ const LoginPage = () => {
                 className="border border-gray-300 p-2 w-full" 
                 name="Password"/>
 
+                {/* !has account */}
+                {!hasAccount && <p className='text-red-500'>Invalid details</p>}
+
               <button type="submit" className="bg-black text-white text-sm p-2 uppercase">
                 {signUp?
                   'signup'
@@ -103,6 +107,9 @@ const LoginPage = () => {
                   onChange={(e) => setPassword(e.target.value)}
                   className="border border-gray-300 p-2 w-full" 
                   name="Password"/>
+
+                   {/*!has account */}
+                   {!hasAccount && <p className='text-red-500'>Account already exists</p>}
 
                 <button type="submit" className="bg-black text-white text-sm p-2 uppercase">
                   {signUp?

@@ -1,12 +1,10 @@
-import { Password } from "@mui/icons-material";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Users } from "./Logins";
-import { createSlice } from "@reduxjs/toolkit";
-import { PayloadAction } from "@reduxjs/toolkit";
-
 
 interface user {
-    name: null|string,
-    password: null|string ,
+    name: string | null;
+    email: string | null;
+    password: string | null;
 }
 
 interface AuthState {
@@ -16,12 +14,11 @@ interface AuthState {
     users: user[];
 }
 
-
-const initialState:AuthState = {
+const initialState: AuthState = {
     isAuthenticated: false,
-    hasAccount: false,
+    hasAccount: true,
     currentUser: null,
-    users:Users
+    users: Users
 }
 
 export const authSlice = createSlice({
@@ -29,31 +26,34 @@ export const authSlice = createSlice({
     initialState,
     reducers: {
         login(state, action: PayloadAction<{ name: string; password: string }>) {
-            const { name, password } = action.payload
-            const foundUser = state.users.find(user => user.name === name && user.password === password)
-            if(foundUser) {
-                state.isAuthenticated = true
-                state.currentUser = foundUser
+            const { name, password } = action.payload;
+            const foundUser = state.users.find(user => user.name === name && user.password === password);
+            if (foundUser) {
+                state.isAuthenticated = true;
+                state.currentUser = foundUser;
+                state.hasAccount = true;
             } else {
-                state.hasAccount = false
+                state.hasAccount = false;
             }
         },
-        signUp(state, action: PayloadAction<{ name: string; email:string; password: string }>) {
-            const { name, email, password } = action.payload
-            const foundUser = state.users.find(user => user.name === name && user.password === password && user.name === email)
-                if(!foundUser) {
-                    state.users.push(action.payload)
-                    state.isAuthenticated = true
-                } else {
-                    state.hasAccount = true
-                }
+        signUp(state, action: PayloadAction<{ name: string; email: string; password: string }>) {
+            const { name, email, password } = action.payload;
+            const foundUser = state.users.find(user => user.name === name || user.email === email);
+            if (!foundUser) {
+                state.users.push({ name, email, password });
+                state.isAuthenticated = true;
+                state.currentUser = { name, email, password };
+                state.hasAccount = true;
+            } else {
+                state.hasAccount = false;
+            }
         },
         logout(state) {
-            state.isAuthenticated = false
-            state.currentUser = null
+            state.isAuthenticated = false;
+            state.currentUser = null;
         }
     }
-})
+});
 
-export default authSlice.reducer
-export const {login, logout, signUp} = authSlice.actions
+export const { login, signUp, logout } = authSlice.actions;
+export default authSlice.reducer;
