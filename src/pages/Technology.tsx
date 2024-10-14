@@ -3,7 +3,6 @@ import BlogCards from "../components/BlogCards";
 
 const Technology = () => {
   const techUpdate = useAppSelector(state => state.blogs.technology)
-  console.log(techUpdate)
   return (
     <div className=' pad' id='global'>
         <div className='bg-black px-4 py-1 uppercase text-sm text-white'>Technology</div>

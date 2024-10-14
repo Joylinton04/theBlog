@@ -73,8 +73,8 @@ const Navbar = () => {
             <div className='bg-[#000000f3] text-white fixed top-0 left-0 h-full w-[280px] md:hidden'>
               <ul className='flex flex-col gap-6 text-[#ccc] pad mt-[55px] text-lg'>
                 <li onClick={() => setIsMenuOpen(prev => !prev)} className='hover:underline hover:duration-300 hover:scale-110 cursor-pointer'><Link to="/">Home</Link></li>
-                <li onClick={() => setIsMenuOpen(prev => !prev)} className='hover:underline hover:duration-300 hover:scale-110 cursor-pointer'><a href="#global">Global</a></li>
-                <li onClick={() => setIsMenuOpen(prev => !prev)} className='hover:underline hover:duration-300 hover:scale-110 cursor-pointer'><a href="#technology">Technology</a></li>
+                <li onClick={() => setIsMenuOpen(prev => !prev)} className='hover:underline hover:duration-300 hover:scale-110 cursor-pointer'><Link to="/global">Global</Link></li>
+                <li onClick={() => setIsMenuOpen(prev => !prev)} className='hover:underline hover:duration-300 hover:scale-110 cursor-pointer'><Link to="/technology">Technology</Link></li>
                 <li className='text-[#f9f9f9f9] px-[1rem] py-2 rounded-sm text-xs cursor-pointer' onClick={() => toggleLogout()}>LOGOUT</li>
               </ul>
             </div>

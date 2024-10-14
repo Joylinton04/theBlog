@@ -20,8 +20,8 @@ const BigStory = ({ blog }:blogProp) => {
 
   return (
     <div className='h-[600px] md:h-full'>{/* {/* min-w-[450px] */} 
-      <Link to={`/postpage/${blog?.id}`} className="h-full flex flex-col gap-12 lg:flex-row">
-        <div className="h-[45%] lg:h-[420px] lg:max-w-[1000px]">
+      <Link to={`/postpage/${blog?.id}`} className="h-full flex flex-col gap-8 lg:flex-row">
+        <div className="h-[55%] lg:h-[420px] lg:max-w-[1000px]">
             <img src={blog.image} className='h-full w-full object-cover object-center' />
         </div>
         <div className='flex flex-col gap-4 lg:gap-8 lg:lg:w-[300px]'>
