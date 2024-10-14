@@ -8,7 +8,7 @@ const Global = () => {
     <div className=' pad' id='global'>
         <div className='bg-black px-4 py-1 uppercase text-sm text-white'>Global</div>
         <div className='flex flex-wrap gap-8 mt-6'>
-        {globalUpdate.length? globalUpdate.map((blog) => 
+        {globalUpdate?.length? globalUpdate?.map((blog) => 
             <BlogCards key={blog.id} blog={blog}/>) 
             : <p>No content to display</p>
         }

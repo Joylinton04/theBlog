@@ -7,7 +7,7 @@ const Technology = () => {
     <div className=' pad' id='global'>
         <div className='bg-black px-4 py-1 uppercase text-sm text-white'>Technology</div>
         <div className='flex flex-wrap gap-8 mt-6'>
-        {techUpdate.length? techUpdate.map((blog) => 
+        {techUpdate?.length? techUpdate.map((blog) => 
             <BlogCards key={blog.id} blog={blog}/>) 
             : <p>No content to display</p>
         }
