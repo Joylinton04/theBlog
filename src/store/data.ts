@@ -11,7 +11,8 @@ import iphone16 from '../assets/iphone16.webp'
 import ps5 from '../assets/ps5.jpg'
 import ios18 from   '../assets/ios18.jpg'
 import ocean from '../assets/ocean.jpeg'
-
+import robotaxis from '../assets/robotaxis.jpg'
+import spaceX from '../assets/spaceX.jpg'
 
 interface blog {
     id: string;
@@ -96,7 +97,7 @@ export  const blogs:blog[] = [
         date: datetime,
         author: "FreeTheCitizens",
         image: freethem,
-        category: "todays Pick",
+        category: "Global",
     },
     {
         id:uuidv4(),
@@ -155,12 +156,32 @@ export  const blogs:blog[] = [
     },
     {
         id:uuidv4(),
-        title: "How Soon Might the Atlantic Ocean Break? Two Sibling Scientists Found an Answer—and Shook the World",
-        slug: "atlantic-ocean-break-scientists-discovery",
-        content: "The prospect of the Atlantic Ocean breaking apart sounds like something out of a sci-fi thriller, but recent findings by two sibling scientists have put this possibility on the scientific radar—and it's shaken the world. The siblings, Dr. Emma and Dr. Noah Carter, have been studying tectonic movements for over a decade, and their recent research has produced groundbreaking insights into the future of our planet's geography.The Atlantic Ocean is bordered by the tectonic plates that slowly drift and shape the continents as we know them. What Dr. Emma and Dr. Noah Carter have discovered is a surprising acceleration in the movement of these plates along the Mid-Atlantic Ridge. This underwater mountain range runs down the center of the Atlantic Ocean, and it is a key location where the tectonic plates of the Earth's crust are either pulling apart or pushing together.Their research, based on new satellite data and advanced geophysical models, suggests that the movement of these plates has become increasingly unstable. They hypothesize that within the next few millennia, the forces along the Mid-Atlantic Ridge could lead to a significant split—essentially breaking the Atlantic into two different basins. While this isn't happening tomorrow, the idea that this process has accelerated is startling.The discovery by Dr. Emma and Dr. Noah Carter about the potential splitting of the Atlantic Ocean is a stark reminder of how dynamic our planet truly is. While the exact timeline of such an event remains uncertain, their research is a significant contribution to our understanding of Earth's ever-changing landscape. It highlights the importance of studying natural systems closely—because even changes on geological timescales can have lasting impacts on our world and our lives.",
+        title: "Tesla Is Ready to Roll Out Its Robotaxis",
+        slug: "tesla-robotaxis-rollout",
+        content: "Tesla's vision for the future of transportation is about to take a massive leap forward with the rollout of its Robotaxis. CEO Elon Musk has long teased the concept of autonomous taxis, and Tesla seems to be on the verge of making it a reality. These self-driving cars are set to revolutionize the way we think about urban mobility and could dramatically reduce the cost and environmental impact of transportation.Robotaxis are fully autonomous electric vehicles (EVs) that Tesla aims to deploy in urban areas to function like a shared, on-demand transportation service. Unlike traditional ride-hailing services that rely on human drivers, Tesla’s Robotaxis will operate using the company’s advanced Full Self-Driving (FSD) technology, which has been under development for several years.Tesla’s Robotaxis could significantly reduce the cost of ride-sharing, as the absence of a human driver would eliminate labor costs. Elon Musk has claimed that using a Tesla Robotaxi will be cheaper than owning a car. Furthermore, the use of electric vehicles will reduce emissions, aligning with global efforts to combat climate change.Despite the promise, there are hurdles Tesla needs to overcome. Regulatory approval remains a significant obstacle, as full self-driving technology has yet to be universally accepted by governments. Safety concerns are another issue, especially given Tesla’s history of beta testing its FSD software with human drivers.Tesla plans to deploy Robotaxis in select regions before expanding the service globally. As the technology matures and regulatory hurdles are cleared, we could see Robotaxis become a key part of urban transportation within the next few years, marking a new era in autonomous mobility.With Tesla leading the charge, the future of self-driving transportation is closer than ever. Keep an eye on further announcements as Tesla gets ready to roll out its revolutionary Robotaxis.",
         date: datetime,
-        author: "Jane Smith 1.0",
-        image: ocean,
-        category: "Global",
+        author: "Sarah Addai",
+        image: robotaxis,
+        category: "Technology",
+    },
+    {
+        id:uuidv4(),
+        title: "Tesla Is Ready to Roll Out Its Robotaxis",
+        slug: "tesla-robotaxis-rollout",
+        content: "Tesla's vision for the future of transportation is about to take a massive leap forward with the rollout of its Robotaxis. CEO Elon Musk has long teased the concept of autonomous taxis, and Tesla seems to be on the verge of making it a reality. These self-driving cars are set to revolutionize the way we think about urban mobility and could dramatically reduce the cost and environmental impact of transportation.Robotaxis are fully autonomous electric vehicles (EVs) that Tesla aims to deploy in urban areas to function like a shared, on-demand transportation service. Unlike traditional ride-hailing services that rely on human drivers, Tesla’s Robotaxis will operate using the company’s advanced Full Self-Driving (FSD) technology, which has been under development for several years.Tesla’s Robotaxis could significantly reduce the cost of ride-sharing, as the absence of a human driver would eliminate labor costs. Elon Musk has claimed that using a Tesla Robotaxi will be cheaper than owning a car. Furthermore, the use of electric vehicles will reduce emissions, aligning with global efforts to combat climate change.Despite the promise, there are hurdles Tesla needs to overcome. Regulatory approval remains a significant obstacle, as full self-driving technology has yet to be universally accepted by governments. Safety concerns are another issue, especially given Tesla’s history of beta testing its FSD software with human drivers.Tesla plans to deploy Robotaxis in select regions before expanding the service globally. As the technology matures and regulatory hurdles are cleared, we could see Robotaxis become a key part of urban transportation within the next few years, marking a new era in autonomous mobility.With Tesla leading the charge, the future of self-driving transportation is closer than ever. Keep an eye on further announcements as Tesla gets ready to roll out its revolutionary Robotaxis.",
+        date: datetime,
+        author: "Sarah Addai",
+        image: robotaxis,
+        category: "todays Pick",
+    },
+    {
+        id:uuidv4(),
+        title: "Elon Musk Moves X and SpaceX Headquarters to Texas",
+        slug: " elon-musk-moves-x-spacex-headquarters-texas",
+        content: "Elon Musk has once again made headlines with his decision to relocate the headquarters of two of his companies—X (formerly Twitter) and SpaceX—to Texas. This move is part of Musk’s ongoing shift away from California, a state he has criticized for overregulation and high taxes. Musk has praised Texas’ business-friendly climate, which offers fewer regulatory hurdles and a lower cost of living, making it an attractive hub for innovation and growth.Texas has become a key state for Musk’s companies over the past few years. In 2021, Tesla moved its headquarters from Palo Alto, California, to Austin, Texas, where the Gigafactory Texas now manufactures electric vehicles and batteries. Musk’s SpaceX already operates a major facility in Boca Chica, Texas, where it develops and tests the Starship rocket, which is designed for missions to the Moon and Mars. The move to Texas aligns Musk's operations with the state's space-friendly policies, affordable land, and a workforce increasingly geared toward tech and aerospace industries.The state also benefits from favorable business taxes and less stringent regulations, which allows Musk’s companies to scale faster and innovate without many of the limitations imposed by California’s stricter labor and environmental laws.By relocating the SpaceX headquarters, Musk can centralize operations near its launch site at Starbase, Texas. This move will streamline the company’s production and testing, reducing logistical costs and improving coordination between development teams and launch operations. SpaceX, with its ambitious plans for interplanetary exploration, stands to benefit from this operational efficiency as it works toward its long-term goals of sending humans to Mars.Meanwhile, the relocation of X (formerly Twitter) signifies Musk’s broader restructuring of the social media platform, which he acquired in 2022. By moving X’s headquarters, Musk is signaling his intent to transform the platform and integrate it more closely with his other ventures. The lower tax burden in Texas will likely help reduce operating costs as Musk continues to make changes to the platform and explore new features, including payments and expanded communications.Musk’s relocation of his companies to Texas marks a broader shift in the tech and space industries, as companies increasingly seek more business-friendly environments. Other tech giants like Oracle and Hewlett Packard have also moved to Texas, following similar motivations of lower taxes, more space, and less regulation.While California remains a significant tech hub, Texas is rapidly gaining momentum as a destination for innovation, particularly in manufacturing, technology, and aerospace sectors. As more companies follow Musk's lead, Texas could cement itself as a new hub for high-tech innovation and space exploration.Despite the benefits, there are challenges. The relocation of major companies to Texas has raised concerns over infrastructure readiness, environmental impact, and workforce availability. Critics argue that rapid development without proper planning could lead to urban sprawl and strain on local resources.Still, Musk remains optimistic that Texas offers the ideal conditions for growth and innovation. His ongoing investment in the state signals that this isn’t just a temporary experiment but a long-term commitment to the future of his companies.In conclusion, Musk's decision to move both X and SpaceX to Texas reflects his preference for a business environment that supports rapid innovation and growth. With less regulatory oversight and more room to expand, Texas seems poised to become the new center of Musk's expanding empire.",
+        date: datetime,
+        author: "Adu Atakora",
+        image: spaceX,
+        category: "Technology",
     },
 ]

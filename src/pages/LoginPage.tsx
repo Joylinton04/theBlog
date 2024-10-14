@@ -12,7 +12,6 @@ const LoginPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  // const users = useAppSelector(state => state.auth.users)
   const isAuthenticated = useAppSelector(state => state.auth.isAuthenticated)
   const hasAccount = useAppSelector(state => state.auth.hasAccount)
 
@@ -22,10 +21,13 @@ const LoginPage = () => {
     setTimeout(() => {
       dispatch(login({ name: username, password:password }))
       setIsLoading(false);
-    },2000)
+    },2500)
   };
 
   const toggleSignup = ():void => {
+    setUsername('');
+    setPassword('');
+    setEmail('');
     setSignUp(prev => !prev);
   };
 

@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 const NewPost = () => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch();
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     title: '',
     slug: '',
@@ -40,11 +41,13 @@ const NewPost = () => {
         category: formData.category,
     }
     // dispatch(addBlog(newBlog))
+    setIsLoading(true)
     console.log(newBlog)
 
     setTimeout(() => {
         navigate('/')
-    },800)
+        setIsLoading(false);
+    },2000)
   }
 
 
@@ -69,7 +72,17 @@ const NewPost = () => {
             </div>
             <div>
                 <label className="font-medium text-sm">Category:</label>
-                <input required type="text" className="border border-gray-300 p-2 w-full" name="category" onChange={handleChange}/>                
+                <select 
+                  required 
+                  className="border border-gray-300 p-2 w-full" 
+                  name="category" 
+                  value={formData.category}
+                  onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                >
+                  <option value="">Select a Category</option>
+                  <option value="Technology">Technology</option>
+                  <option value="Global">Global</option>
+                </select>
             </div>
         </div>
         
@@ -81,6 +94,18 @@ const NewPost = () => {
 
         <button type="submit" className="bg-black text-white text-sm p-2 uppercase">Submit</button>
       </form>
+      {isLoading && 
+            <div className='fixed top-0 left-0 z-20 w-full h-full bg-[#21212190]'>
+              <div className='flex justify-center items-center h-full w-full px-4 ssm:p-2'>
+                <div className='bg-white w-[200px] h-[200px] p-2 flex justify-center items-center rounded'>
+                  <div className='flex flex-col items-center gap-6'>
+                    <div className="loader2"></div>
+                    <div>Please Wait...</div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        }
     </div>
   )
 }

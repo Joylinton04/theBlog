@@ -10,10 +10,10 @@ const Landingpage = () => {
   const techUpdate = useAppSelector(state => state.blogs.technology);
   const todaysPick = useAppSelector(state => state.blogs.todaysPick);
   const globalUpdate = useAppSelector(state => state.blogs.global);
-  const mostRecent = useAppSelector(state => state.blogs.mostRecent)
-  const theBigOne = techUpdate.length > 0 ? techUpdate[0] : null;
+  const mostRecent = useAppSelector(state => state.blogs.mostRecent);
+  const mostRecent1 = useAppSelector(state => state.blogs.mostRecent1);
+  const theBigOne = techUpdate.length > 0 ? techUpdate[techUpdate.length - 1] : null;
   const bigToday = todaysPick.length > 2 ? todaysPick[2] : null;
-
 
   
   return (
@@ -21,7 +21,7 @@ const Landingpage = () => {
       {/* Layout */}
       <div className='flex justify-center items-center flex-col pad'>
         <div>
-          <div className='md:flex md:flex-col md:gap-4 lg:flex-row'>
+          <div className='md:flex md:flex-col md:gap-6 lg:flex-row'>
             {/* Section one */}
             <div className='flex flex-col gap-6'>
                 <div className='bg-black px-4 py-1 uppercase text-sm text-white'>Today's Picks</div>
@@ -34,7 +34,7 @@ const Landingpage = () => {
                     }
                   </div>
                 </div>
-                <div className='hidden md:flex md:gap-6'>
+                <div className='hidden md:flex md:gap-8'>
                     <div className='md:flex md:flex-col md:gap-6'>
                       {todaysPick.length ? (todaysPick.slice(0,2).map((blog) => 
                           <div key={blog.id}><BlogComponent mdWidth mdText blog={blog}/></div>))
@@ -74,7 +74,7 @@ const Landingpage = () => {
                 )
               }
               <div className='flex flex-wrap md:justify-between gap-6 mt-8'>
-                {techUpdate.length? techUpdate.slice(0,4).map((blog) => 
+                {mostRecent1.length? mostRecent1.map((blog) => 
                   <MiniCards2 key={blog.id} blog={blog}/>) 
                   : <p>No content to display</p>
                 }

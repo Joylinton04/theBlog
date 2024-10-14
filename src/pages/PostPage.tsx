@@ -52,6 +52,10 @@ const PostPage = () => {
           </div>
         </>
       }
+        <div className="flex gap-6">
+
+        </div>
+
       </div>
     </div>
   )

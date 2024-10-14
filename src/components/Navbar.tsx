@@ -70,11 +70,12 @@ const Navbar = () => {
             </div>
             {isMenuOpen 
               &&
-            <div className='bg-[#000000f3] text-white fixed top-0 left-0 h-full w-[210px] md:hidden'>
+            <div className='bg-[#000000f3] text-white fixed top-0 left-0 h-full w-[280px] md:hidden'>
               <ul className='flex flex-col gap-6 text-[#ccc] pad mt-[55px] text-lg'>
                 <li onClick={() => setIsMenuOpen(prev => !prev)} className='hover:underline hover:duration-300 hover:scale-110 cursor-pointer'><Link to="/">Home</Link></li>
                 <li onClick={() => setIsMenuOpen(prev => !prev)} className='hover:underline hover:duration-300 hover:scale-110 cursor-pointer'><a href="#global">Global</a></li>
                 <li onClick={() => setIsMenuOpen(prev => !prev)} className='hover:underline hover:duration-300 hover:scale-110 cursor-pointer'><a href="#technology">Technology</a></li>
+                <li className='text-[#f9f9f9f9] px-[1rem] py-2 rounded-sm text-xs cursor-pointer' onClick={() => toggleLogout()}>LOGOUT</li>
               </ul>
             </div>
             }
@@ -97,7 +98,7 @@ const Navbar = () => {
               }
 
               {/* Logout */}
-              <div className='bg-red-500 text-[#f9f9f9f9] px-[1rem] py-2 rounded-sm text-xs cursor-pointer' onClick={() => toggleLogout()}>LOGOUT</div>
+              <div className='bg-red-500 text-[#f9f9f9f9] px-[1rem] py-2 rounded-sm text-xs cursor-pointer hidden sm:block' onClick={() => toggleLogout()}>LOGOUT</div>
               {
                 isLogout &&
                 <div className='fixed top-0 left-0 z-20 w-full h-full bg-[#21212190]'>
@@ -117,7 +118,7 @@ const Navbar = () => {
               <div className='flex justify-center items-center h-full w-full px-4 ssm:p-2'>
                 <div className='bg-white w-[200px] h-[200px] p-2 flex justify-center items-center rounded'>
                   <div className='flex flex-col items-center gap-6'>
-                    <div className="loader"></div>
+                    <div className="loader2"></div>
                     <div>Please Wait...</div>
                   </div>
                 </div>
@@ -136,10 +137,8 @@ const Navbar = () => {
         <div className='hidden sm:flex sm:justify-between sm:border-b sm:h-[45px] sm:px-6 sm:w-full'>
             <div className='flex justify-between gap-6 h-full'>
               <NavLink to="/" className='flex items-center justify-center hover:bg-active hover:text-white h-full text-center px-4 cursor-pointer'>Home</NavLink>
-              {/* <NavLink to="/technology" className='flex items-center justify-center hover:bg-active hover:text-white h-full text-center px-4 cursor-pointer'>Gear</NavLink> */}
-              <div className='flex items-center justify-center hover:bg-active hover:text-white h-full text-center px-4 cursor-pointer'><a href="#technology">Technology</a></div>
-              {/* <div className='flex items-center justify-center hover:bg-active hover:text-white h-full text-center px-4 cursor-pointer'>Sports</div> */}
-              <div className='flex items-center justify-center hover:bg-active hover:text-white h-full text-center px-4 cursor-pointer'><a href="#global">Global</a></div>
+              <NavLink to="/technology" className='flex items-center justify-center hover:bg-active hover:text-white h-full text-center px-4 cursor-pointer'>Technology</NavLink>
+              <NavLink to="/global" className='flex items-center justify-center hover:bg-active hover:text-white h-full text-center px-4 cursor-pointer'>Global</NavLink>
             </div>
             <div className='flex items-center justify-center'>
               <SearchIcon />

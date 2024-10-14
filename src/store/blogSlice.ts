@@ -18,14 +18,16 @@ interface BlogState {
     global: Blog[];
     todaysPick: Blog[];
     mostRecent: Blog[];
+    mostRecent1: Blog[];
 }
 
 const initialState: BlogState = {
     allBlogs: blogs,
-    technology: blogs.filter(blog => blog.category === "Technology"),
-    global: blogs.filter(blog => blog.category === "Global"),
+    technology: blogs.filter(blog => blog.category === "Technology").reverse(),
+    global: blogs.filter(blog => blog.category === "Global").reverse(),
     todaysPick: blogs.filter(blog => blog.category === "todays Pick"),
-    mostRecent: blogs.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 3),
+    mostRecent: blogs.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()).reverse().slice(0, 3),
+    mostRecent1: blogs.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 4).reverse(),
 }
 
 export const blogSlice = createSlice({
