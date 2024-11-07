@@ -12,8 +12,8 @@ const Landingpage = () => {
   const globalUpdate = useAppSelector(state => state.blogs.global);
   const mostRecent = useAppSelector(state => state.blogs.mostRecent);
   const mostRecent1 = useAppSelector(state => state.blogs.mostRecent1);
-  const theBigOne = techUpdate.length > 0 ? techUpdate[(techUpdate?.length - 1)] : null;
-  const bigToday = todaysPick.length > 2 ? todaysPick[2] : null;
+  const theBigOne = techUpdate.length > 0 ? techUpdate[(techUpdate?.length - 1)] : undefined;
+  const bigToday = todaysPick.length > 2 ? todaysPick[2] : undefined;
 
   
   return (
@@ -102,28 +102,6 @@ const Landingpage = () => {
                 }
               </div>
           </div>
-
-          {/* section 6
-          <div className='mt-10'>
-              <div className='bg-black px-4 py-1 uppercase text-sm text-white'>Security</div>
-              <div className='flex flex-wrap md:flex-nowrap gap-8 mt-6'>
-                <BlogCards/>
-                <BlogCards/>
-                <BlogCards/>
-                <BlogCards/>
-              </div>
-          </div> */}
-
-          {/* section 7
-          <div className='mt-10'>
-              <div className='bg-black px-4 py-1 uppercase text-sm text-white'>Gear</div>
-              <div className='flex flex-wrap md:flex-nowrap gap-8 mt-6'>
-                <BlogCards/>
-                <BlogCards/>
-                <BlogCards/>
-                <BlogCards/>
-              </div>
-          </div> */}
 
         </div>
       </div>

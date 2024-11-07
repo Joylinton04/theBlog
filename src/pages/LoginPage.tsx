@@ -43,7 +43,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/'); 
+      navigate('/');
     }
   }, [isAuthenticated, navigate]); 
 
@@ -51,7 +51,7 @@ const LoginPage = () => {
     <div className='flex justify-center items-center min-h-screen font-lora'>
       <div className='flex items-center justify-center flex-wrap'>
       <form className={`sm:border sm:border-gray-300 min-h-[450px] min-w-[400px] sm:w-[500px] pad ${signUp ? 'lg:translate-x-[100%]' : ''} duration-500`} onSubmit={signUp?handleSignUp : handleLogin}>
-            <h1 className='uppercase font-title text-3xl text-center'>in today</h1>
+            {<h1 className='uppercase font-title text-3xl text-center'>Blog Blound</h1>}
 
           {
             !signUp ?

@@ -47,7 +47,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className='h-[10vh] sm:h-[130px] sticky top-0 z-50 bg-white'>
+    <nav className='h-[10vh] sm:h-[130px] sticky top-0 z-50 bg-white dark:bg-black'>
         {/* Title */}
         <div className="flex items-center justify-between border-b p-2 h-full sm:px-6 sm:h-[85px] relative">
             <div className='hidden sm:flex sm:gap-1'>
@@ -56,6 +56,7 @@ const Navbar = () => {
               <LinkedInIcon/>
               <InstagramIcon/>
             </div>
+
 
             {/* Mobile menu */}
             <div className='flex items-center gap-3'>
@@ -66,7 +67,7 @@ const Navbar = () => {
                   <MenuIcon style={{fontSize: '36px'}}/>  
                 }
                 </div>
-                <div className='uppercase font-title text-3xl'>in today</div>
+                <div className='uppercase font-title text-3xl'>Blog blound</div>
             </div>
             {isMenuOpen 
               &&
@@ -80,7 +81,7 @@ const Navbar = () => {
             </div>
             }
 
-            <div className='flex gap-4'>
+            <div className='flex gap-4 items-center'>
               {/* Post a blog for admins only */}
             <div className='bg-[#2E6697] uppercase text-[#f9f9f9f9] px-[1rem] py-2 rounded-sm text-xs cursor-pointer' onClick={() => handlePostblog()}>Post a Blog</div>
             {

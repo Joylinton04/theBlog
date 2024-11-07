@@ -40,14 +40,14 @@ const PostPage = () => {
           {/* section 2 */}
           <div>
             <div className="mt-4">
-              <h1 className="text-5xl font-Blogtitle font-bold capitalize">{blog.title}</h1>
-              <p className="mt-4 capitalize font-blogtitle font-semibold text-lg">{blog.slug}</p>
+              <h1 className="text-5xl font-Blogtitle font-bold capitalize">{blog?.title}</h1>
+              <p className="mt-4 capitalize font-blogtitle font-semibold text-lg">{blog?.slug}</p>
             </div>
             <div className="mt-6"> 
               <div className="max-w-[1000px]">
-                <img src={blog.image} className="w-full h-full object-cover object-center"/>
+                <img src={blog?.image} className="w-full h-full object-cover object-center"/>
               </div>
-              <p className="mt-6 sm:leading-7 md:leading-8 text-lg">{blog.content}</p>
+              <p className="mt-6 sm:leading-7 md:leading-8 text-lg">{blog?.content}</p>
             </div>
           </div>
         </>

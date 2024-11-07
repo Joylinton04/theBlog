@@ -5,7 +5,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 
 const Footer = () => {
   return (
-    <div className="pad bg-[#ccc] mt-10">
+    <div className="pad bg-[#ccc] mt-10 dark:bg-black">
       <div className='flex justify-center items-center'>
           <div className='flex flex-wrap gap-6 md:flex-nowrap'>
             <div className='flex flex-col gap-4'>

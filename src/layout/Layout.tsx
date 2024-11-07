@@ -5,12 +5,12 @@ import ProtectedRoutes from '../utils/ProtectedRoutes';
 
 const Layout = () => {
   return (
-    <div className='min-h-[100vh] font-lora text-[#333333]'>
-        <ScrollToTop/>
-        <Navbar/>
-        <ProtectedRoutes/>
-        <Footer/>
-    </div>
+      <div className='min-h-[100vh] font-lora text-[#333333] dark:bg-black dark:text-white'>
+          <ScrollToTop/>
+          <Navbar/>
+          <ProtectedRoutes/>
+          <Footer/>
+      </div>
   )
 }
 
