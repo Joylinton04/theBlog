@@ -13,6 +13,7 @@ import ios18 from   '../assets/ios18.jpg'
 import ocean from '../assets/ocean.jpeg'
 import robotaxis from '../assets/robotaxis.jpg'
 import spaceX from '../assets/spaceX.jpg'
+import trump from '../assets/trump.jpg'
 
 interface blog {
     id: string;
@@ -172,6 +173,16 @@ export  const blogs:blog[] = [
         date: datetime,
         author: "Sarah Addai",
         image: robotaxis,
+        category: "todays Pick",
+    },
+    {
+        id:uuidv4(),
+        title: "Donald Trump Defeats Kamala Harris in the 2024 Presidential Election",
+        slug: "trump-defeats-harris-2024-election",
+        content: "In a closely watched 2024 presidential race, Donald Trump has emerged victorious over Vice President Kamala Harris. Trump’s win marks a return to the Oval Office for the former president, who previously held the position from 2017 to 2021. The election was marked by intense campaigning and stark contrasts in policy, with Trump focusing on promises to boost economic growth, tighten immigration policies, and reverse recent Democratic policies.Kamala Harris, the Democratic candidate, campaigned on a platform that emphasized climate action, healthcare reform, and civil rights. Her bid to become the first female president energized a diverse voter base, yet Trump’s appeal to key states and his consistent messaging on issues such as energy independence and national security appeared to resonate more widely across the electorate.Voter turnout was at an all-time high, reflecting the stakes of this election and the sharp political divides in the country. Trump’s victory signals a shift in American politics, and his administration is expected to pursue conservative agendas in domestic and foreign policy. For Harris and the Democratic Party, the outcome may lead to reflections on strategy and positioning ahead of future elections.",
+        date: datetime,
+        author: "Grace Sarponmaa",
+        image: trump,
         category: "todays Pick",
     },
     {

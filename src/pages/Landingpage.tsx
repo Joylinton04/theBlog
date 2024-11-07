@@ -13,7 +13,8 @@ const Landingpage = () => {
   const mostRecent = useAppSelector(state => state.blogs.mostRecent);
   const mostRecent1 = useAppSelector(state => state.blogs.mostRecent1);
   const theBigOne = techUpdate.length > 0 ? techUpdate[(techUpdate?.length - 1)] : undefined;
-  const bigToday = todaysPick.length > 2 ? todaysPick[2] : undefined;
+  const bigToday = todaysPick.length > 2 ? todaysPick[3] : undefined;
+  console.log(todaysPick)
 
   
   return (
