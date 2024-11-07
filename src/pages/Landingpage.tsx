@@ -14,7 +14,7 @@ const Landingpage = () => {
   const mostRecent1 = useAppSelector(state => state.blogs.mostRecent1);
   const theBigOne = techUpdate.length > 0 ? techUpdate[(techUpdate?.length - 1)] : undefined;
   const bigToday = todaysPick.length > 2 ? todaysPick[3] : undefined;
-  console.log(todaysPick)
+  console.log([...todaysPick].reverse())
 
   
   return (
@@ -28,7 +28,7 @@ const Landingpage = () => {
                 <div className='bg-black px-4 py-1 uppercase text-sm text-white'>Today's Picks</div>
                 <div className='md:hidden h-full'>
                   <div className='flex-col gap-12 flex-wrap h-full'>
-                    {todaysPick?.length ? (todaysPick).map((blog) => 
+                    {todaysPick?.length ? ([...todaysPick].reverse()).map((blog) => 
                       <div key={blog.id}><BlogComponent blog={blog}/></div>
                     ) 
                     : (<p>No content to display</p>)
