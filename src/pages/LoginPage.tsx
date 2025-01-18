@@ -1,35 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch,useAppSelector } from '../store/store';
-import { login,signUp as SignUp } from '../store/authSlice';
 import { useNavigate } from 'react-router-dom';
 import loginImg from '../assets/login.svg';
 import {auth} from '../config/firebase';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 
 const LoginPage = () => {
-  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [signUp, setSignUp] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [isError, setError] = useState(false);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const isAuthenticated = useAppSelector(state => state.auth.isAuthenticated)
   const hasAccount = useAppSelector(state => state.auth.hasAccount)
 
-  const handleLogin = (e: React.FormEvent) => {
-    setIsLoading(prev => !prev);
+  const handleLogin = async(e: React.FormEvent) => {
     e.preventDefault();
-    setTimeout(() => {
-      dispatch(login({ name: username, password:password }))
+    try {
+      setError(false)
+      setIsLoading(prev => !prev);
+      await signInWithEmailAndPassword(auth, email, password);
+      setIsLoading(prev => !prev);
+    }catch (err){
+      setError(true)
+      console.log({err})
       setIsLoading(false);
-    },2500)
+      //make cluade ai handle the error
+    }
   };
 
 
   const toggleSignup = ():void => {
-    setUsername('');
     setPassword('');
     setEmail('');
     setSignUp(prev => !prev);
@@ -44,13 +47,15 @@ const LoginPage = () => {
       setIsLoading(prev => !prev);
     }catch (err){
       setError(true)
-      console.log(err);
+      console.log({err})
+      setIsLoading(false);
+      //make cluade ai handle the error
     }
   }
 
   useEffect(() => {
     if (isAuthenticated) {
-      // navigate('/');
+      navigate('/');
     }
   }, [isAuthenticated, navigate]); 
 
@@ -63,16 +68,16 @@ const LoginPage = () => {
           {
             !signUp ?
             <div className='flex flex-col gap-6 border border-gray-300 p-4 mt-6'>
-              <label className="font-medium text-sm">Username:</label>
+              <label className="font-medium text-sm" id='email'>Email</label>
               <input 
                 required 
-                type="text" 
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                type="email" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="border border-gray-300 p-2 w-full" 
-                name="name"/>
+                name="email"/>
             
-              <label className="font-medium text-sm">Password:</label>
+              <label className="font-medium text-sm">Password</label>
               <input 
                 required 
                 type="password" 
@@ -82,7 +87,7 @@ const LoginPage = () => {
                 name="Password"/>
 
                 {/* !has account */}
-                {!hasAccount && <p className='text-red-500'>Invalid details</p>}
+                {(isError) && <p className='text-red-500'>Invalid details</p>}
 
               <button type="submit" className="bg-black text-white text-sm p-2 uppercase">
                 {signUp?
@@ -100,15 +105,6 @@ const LoginPage = () => {
             : 
             <div className='flex flex-col gap-6 border border-gray-300 p-4 mt-6'>
               <p className='text-center mt-4 uppercase font-semibold'>Welcome to BlogBlound🚀</p>
-                <label className="font-medium text-sm">Username:</label>
-                <input 
-                  required 
-                  type="text" 
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  className="border border-gray-300 p-2 w-full" 
-                  name="name"/>
-              
                 <label className="font-medium text-sm">Email:</label>
                 <input 
                   required 
