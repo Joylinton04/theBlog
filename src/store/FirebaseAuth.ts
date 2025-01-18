@@ -36,7 +36,6 @@ export const initializeAuthListener = (dispatch: Dispatch) => {
         photoURL: user.photoURL,
         displayName: user.displayName
       };
-      console.log(user.email, 'has signed in')
       dispatch(setUser(authUser));
     } else {
       //signed out
