@@ -8,7 +8,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { NavLink,Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { logout } from '../store/authSlice';
+import { clearUser } from '../store/authSlice';
 import { useAppSelector } from '../store/store';
 
 const Navbar = () => {
@@ -29,10 +29,8 @@ const Navbar = () => {
 
   const handleLogOut = () => {
     setIsLoading(prev => !prev);
-    setTimeout(() => {
-      dispatch(logout());
-      setIsLoading(prev => !prev);
-    },2000)
+    dispatch(clearUser())
+    setIsLoading(prev => !prev);
   }
 
   const handlePostblog = () => {

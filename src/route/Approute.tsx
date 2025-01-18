@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import Landingpage from '../pages/Landingpage';
+import Home from '../pages/Home';
 import Layout from '../layout/Layout';
 import PostPage from '../pages/PostPage';
 import NewPost from '../pages/NewPost';
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <Landingpage/>
+                element: <Home/>
             },
             {
                 path: 'postpage/:id',
