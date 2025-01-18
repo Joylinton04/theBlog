@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Users } from "./Logins";
+import { Users } from "./FirebaseAuth";
 
 interface user {
     name: string | null;
@@ -26,6 +26,15 @@ export const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
+        setUser(state, action) {
+            state.currentUser = action.payload;
+            state.isAuthenticated = true;
+            // state.loading = false;
+        },
+        clearUser(state) {
+            state.currentUser = null;
+            state.isAuthenticated = false;
+        },
         login(state, action: PayloadAction<{ name: string; password: string }>) {
             const { name, password } = action.payload;
             const foundUser = state.users.find(user => user.name === name && user.password === password);
@@ -56,5 +65,5 @@ export const authSlice = createSlice({
     }
 });
 
-export const { login, signUp, logout } = authSlice.actions;
+export const { login, signUp, logout, setUser, clearUser } = authSlice.actions;
 export default authSlice.reducer;
