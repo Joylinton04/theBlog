@@ -3,6 +3,8 @@ import { useAppDispatch,useAppSelector } from '../store/store';
 import { login,signUp as SignUp } from '../store/authSlice';
 import { useNavigate } from 'react-router-dom';
 import loginImg from '../assets/login.svg';
+import {auth} from '../config/firebase';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
@@ -10,6 +12,7 @@ const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [signUp, setSignUp] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const isAuthenticated = useAppSelector(state => state.auth.isAuthenticated)
@@ -24,6 +27,7 @@ const LoginPage = () => {
     },2500)
   };
 
+
   const toggleSignup = ():void => {
     setUsername('');
     setPassword('');
@@ -31,19 +35,22 @@ const LoginPage = () => {
     setSignUp(prev => !prev);
   };
 
-  const handleSignUp = (e:React.FormEvent) => {
+  const handleSignUp = async (e:React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(prev => !prev);
-    
-    setTimeout(() => {
-      dispatch(SignUp({ name: username, email: email, password: password }))
-      setIsLoading(false);
-    },2000)
+    try {
+      setError(false)
+      setIsLoading(prev => !prev);
+      await createUserWithEmailAndPassword(auth, email, password);
+      setIsLoading(prev => !prev);
+    }catch (err){
+      setError(true)
+      console.log(err);
+    }
   }
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/');
+      // navigate('/');
     }
   }, [isAuthenticated, navigate]); 
 
