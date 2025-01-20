@@ -11,16 +11,12 @@ interface user {
 
 interface AuthState {
     isAuthenticated: boolean;
-    hasAccount: boolean;
     currentUser: user | null;
-    users: user[];
 }
 
 const initialState: AuthState = {
     isAuthenticated: false,
-    hasAccount: true,
     currentUser: null,
-    users: Users
 }
 
 export const authSlice = createSlice({

@@ -14,7 +14,6 @@ const LoginPage = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const isAuthenticated = useAppSelector(state => state.auth.isAuthenticated)
-  const hasAccount = useAppSelector(state => state.auth.hasAccount)
 
   const handleLogin = async(e: React.FormEvent) => {
     e.preventDefault();
@@ -27,7 +26,7 @@ const LoginPage = () => {
       setError(true)
       console.log({err})
       setIsLoading(false);
-      //make cluade ai handle the error
+      // make claude ai handle the error🤧
     }
   };
 
@@ -124,7 +123,7 @@ const LoginPage = () => {
                   name="Password"/>
 
                    {/*!has account */}
-                   {!hasAccount && <p className='text-red-500'>Account already exists</p>}
+                   {!isError && <p className='text-red-500'>Account already exists</p>}
 
                 <button type="submit" className="bg-black text-white text-sm p-2 uppercase">
                   {signUp?
