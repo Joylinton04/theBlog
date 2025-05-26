@@ -4,6 +4,7 @@ import MiniCards2 from '../components/MiniCards2';
 import BigStory from '../components/BigStory';
 import BlogCards from '../components/BlogCards';
 import { useAppSelector } from '../store/store';
+import { getAuth } from 'firebase/auth';
 
 
 const Landingpage = () => {
@@ -14,8 +15,8 @@ const Landingpage = () => {
   const mostRecent1 = useAppSelector(state => state.blogs.mostRecent1);
   const theBigOne = techUpdate.length > 0 ? techUpdate[(techUpdate?.length - 1)] : undefined;
   const bigToday = todaysPick.length > 2 ? todaysPick[3] : undefined;
-  console.log([...todaysPick].reverse())
 
+  
   
   return (
     <div>

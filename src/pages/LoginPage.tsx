@@ -11,7 +11,6 @@ const LoginPage = () => {
   const [signUp, setSignUp] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setError] = useState(false);
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const isAuthenticated = useAppSelector(state => state.auth.isAuthenticated)
 
@@ -20,13 +19,13 @@ const LoginPage = () => {
     try {
       setError(false)
       setIsLoading(prev => !prev);
-      await signInWithEmailAndPassword(auth, email, password);
+      const response = await signInWithEmailAndPassword(auth, email, password);
       setIsLoading(prev => !prev);
+      console.log(response)
     }catch (err){
       setError(true)
       console.log({err})
       setIsLoading(false);
-      // make claude ai handle the error🤧
     }
   };
 
