@@ -7,7 +7,10 @@ const app = express()
 
 app.use(express.json())
 app.use(cookieparser())
-app.use(cors({ origin: allowedOrigins, credentials: true })) 
+
+
+
+app.use(cors({ origin: 'http://localhost:5173', credentials: true })) 
 
 
 // use route endpoints here
