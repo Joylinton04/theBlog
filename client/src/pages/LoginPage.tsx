@@ -34,8 +34,11 @@ const LoginPage = () => {
 
     try {
       const response = await axios.post(
-        import.meta.env.VITE_BACKEND_URL + "/auth/api/register"
+        import.meta.env.VITE_BACKEND_URL + "/api/auth/register",
+        {email,password},
+        {withCredentials: true}
       );
+      console.log(response)
     } catch (err) {
       console.log(err);
     }
