@@ -3,6 +3,7 @@ const admin = require("../config/firebase.admin");
 const authMiddleware = async (req, res, next) => {
   const token = req.headers.authorization?.split("Bearer ")[1];
   if (!token) return res.status(401).json({ message: "Unauthorized" });
+  console.log("Token: ", token)
 
   try {
     const decoded = await admin.auth().verifyIdToken(token);
