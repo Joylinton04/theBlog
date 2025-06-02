@@ -1,7 +1,17 @@
 const express = require('express')
-
-
+const cors = require('cors')
+const cookieparser = require('cookie-parser')
+const auth = require('./controllers/auth.controller')
 const app = express()
+
+
+app.use(express.json())
+app.use(cookieparser())
+app.use(cors({ origin: allowedOrigins, credentials: true })) 
+
+
+// use route endpoints here
+app.use('/api/auth', auth)
 
 
 
