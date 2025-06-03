@@ -10,12 +10,14 @@ app.use(cookieparser())
 
 
 
-app.use(cors({ origin: 'http://localhost:5173', credentials: true })) 
+app.use(cors({
+    origin: 'http://localhost:5173', 
+    credentials: true 
+})) 
 
 
 // use route endpoints here
 app.use('/api/auth', auth)
-
 
 
 app.get('/', (req, res) => {
