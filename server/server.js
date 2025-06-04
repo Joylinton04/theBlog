@@ -1,7 +1,8 @@
 const express = require('express')
 const cors = require('cors')
 const cookieparser = require('cookie-parser')
-const auth = require('./controllers/auth.controller')
+const auth = require('./route/auth.route')
+const blog = require('./route/blog.route')
 const app = express()
 
 
@@ -18,6 +19,7 @@ app.use(cors({
 
 // use route endpoints here
 app.use('/api/auth', auth)
+app.use('/api/blog', blog)
 
 
 app.get('/', (req, res) => {
