@@ -1,11 +1,12 @@
 const route = require('express').Router()
-const register = require('../controllers/auth.controller')
+const authControllers = require('../controllers/auth.controller')
 const authMiddleware = require('../middleware/auth.middleware')
 
 
+// registerd users
 
-
-route.post('/register',register)
+route.post('/register',authControllers.register)
+route.post('/isAuth',authControllers.isAuthenticated)
 
 
 
