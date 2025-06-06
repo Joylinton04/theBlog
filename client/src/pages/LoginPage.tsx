@@ -5,6 +5,7 @@ import loginImg from "../assets/login.svg";
 import { auth } from "../config/firebase";
 import {
   createUserWithEmailAndPassword,
+  signInWithCustomToken,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import axios from "axios";
@@ -20,27 +21,20 @@ const LoginPage = () => {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // try {
-    //   setError(false)
-    //   setIsLoading(prev => !prev);
-    //   const response = await signInWithEmailAndPassword(auth, email, password);
-    //   setIsLoading(prev => !prev);
-    //   console.log(response)
-    // }catch (err){
-    //   setError(true)
-    //   console.log({err})
-    //   setIsLoading(false);
-    // }
-
     try {
-      const {data} = await axios.post(
-        import.meta.env.VITE_BACKEND_URL + "/api/auth/register",
-        {email,password},
-        {withCredentials: true}
+      setError(false)
+      setIsLoading(prev => !prev);
+      const response = await axios.post(
+        import.meta.env.VITE_BACKEND_URL + "/api/auth/custom-token",
+        {email, password},
+        { withCredentials: true }
       );
-      console.log(data)
-    } catch (err) {
-      console.log(err);
+      const data = await signInWithCustomToken(auth, response.data.token)
+      setIsLoading(prev => !prev);
+    }catch (err){
+      setError(true)
+      console.log({err})
+      setIsLoading(false);
     }
   };
 
@@ -55,15 +49,19 @@ const LoginPage = () => {
     try {
       setError(false);
       setIsLoading((prev) => !prev);
-      await createUserWithEmailAndPassword(auth, email, password);
-      setIsLoading((prev) => !prev);
+      const { data } = await axios.post(
+        import.meta.env.VITE_BACKEND_URL + "/api/auth/register",
+        { email, password },
+        { withCredentials: true }
+      );
+      setIsLoading(false)
     } catch (err) {
       setError(true);
-      console.log({ err });
+      console.log(err);
       setIsLoading(false);
-      //make cluade ai handle the error
     }
   };
+
 
   useEffect(() => {
     if (isAuthenticated) {
