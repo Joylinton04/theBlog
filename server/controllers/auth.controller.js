@@ -43,6 +43,8 @@ const createCustomToken = async (req, res) => {
   }
 };
 
+//build the isAdmin middleware
+
 const isAuthenticated = async (req, res) => {
   // verify token 
   const {uid} = req.body
@@ -54,4 +56,13 @@ const isAuthenticated = async (req, res) => {
   }
 }
 
-module.exports = {register, isAuthenticated, createCustomToken};
+const getUsers = async (req, res) => {
+  try {
+    const data = await admin.auth().listUsers(100)
+    res.json({success: true, users: data.users})
+  } catch (err) {
+    res.json({success: false, message: err.message})
+  }
+}
+
+module.exports = {register, isAuthenticated, createCustomToken, getUsers};
