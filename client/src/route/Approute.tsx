@@ -6,6 +6,7 @@ import NewPost from '../pages/NewPost';
 import LoginPage from '../pages/LoginPage';
 import Technology from '../pages/Technology';
 import Global from '../pages/Global';
+import AllUsers from '../pages/allUsers';
 
 const router = createBrowserRouter([
     {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
             {
                 path: '/global',
                 element: <Global/>
+            },
+            {
+                path: '/get-users',
+                element: <AllUsers/>
             }
         ]
     }
