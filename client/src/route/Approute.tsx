@@ -6,7 +6,7 @@ import NewPost from '../pages/NewPost';
 import LoginPage from '../pages/LoginPage';
 import Technology from '../pages/Technology';
 import Global from '../pages/Global';
-import AllUsers from '../pages/allUsers';
+import AllUsers from '../pages/AllUsers';
 
 const router = createBrowserRouter([
     {
