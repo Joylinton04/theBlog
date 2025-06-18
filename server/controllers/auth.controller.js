@@ -47,10 +47,10 @@ const createCustomToken = async (req, res) => {
 
 const isAuthenticated = async (req, res) => {
   // verify token 
-  const {uid} = req.body
+  // const {uid} = req.body
   try {
-    const data = await admin.auth().getUser(uid)
-    res.json({success: true, data: data})
+    // const data = await admin.auth().getUser(uid)
+    res.json({success: true})
   } catch (err) {
     res.json({success: false, message: err.message})
   }
