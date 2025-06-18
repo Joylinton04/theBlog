@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { signOut } from "firebase/auth";
 import { auth } from "../config/firebase";
 
+
 interface user {
     email: string | null;
     password: string | null;

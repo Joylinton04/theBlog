@@ -19,6 +19,9 @@ export const initializeAuthListener = (dispatch: Dispatch) => {
         photoURL: user.photoURL,
         displayName: user.displayName
       };
+      // user.getIdTokenResult()
+      //   .then((result) => console.log(result.claims))
+      //   .catch(err => console.log(err))
       dispatch(setUser(authUser));
     } else {
       //signed out
