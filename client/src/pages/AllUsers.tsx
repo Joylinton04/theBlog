@@ -2,47 +2,78 @@ import { IconButton } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { auth } from "../config/firebase";
+import { getIdToken } from "firebase/auth";
 
 interface userType {
-    id: string
-    name: string
-    isAdmin: boolean
-    lastSignIn: string
+  id: string;
+  name: string;
+  isAdmin: boolean;
+  lastSignIn: string;
 }
 
 const AllUsers = () => {
   const [openOptionId, setOpenOptionId] = useState<string | null>(null);
-  const [users, setAllUsers] = useState<userType[]>([])
+  const [users, setAllUsers] = useState<userType[]>([]);
 
   const toggleOption = (id: string) => {
     setOpenOptionId((prev) => (prev === id ? null : id));
   };
 
   const makeAdmin = async () => {
-  try {
-    const { data } = await axios.get(import.meta.env.VITE_BACKEND_URL + '/api/auth/get-users');
-
-    if (data.success) {
-      const formattedUsers = (data.users as any[]).map((user) => ({
-        id: user.uid,
-        name: user.email,
-        isAdmin: user.customClaims?.isAdmin || false,
-        lastSignIn: user.metadata.lastSignInTime,
-      }));
-
-      setAllUsers(formattedUsers);
+    try {
+      const { data } = await axios.post(
+        import.meta.env.VITE_BACKEND_URL + "/api/admin/make-user-admin"
+      );
+      console.log(data);
+    } catch (err) {
+      console.log(err);
     }
-  } catch (err) {
-    console.log(err);
-  }
-};
-
+  };
 
   useEffect(() => {
-    makeAdmin()
-  },[])
+    const getAllUsers = async () => {
+      try {
+        const currentUser = auth.currentUser;
+        if (!currentUser) {
+          console.warn("User not signed in yet");
+          return;
+        }
+
+        const token = await getIdToken(currentUser);
+
+        const { data } = await axios.get(
+          import.meta.env.VITE_BACKEND_URL + "/api/auth/get-users",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
 
+        if (data.success) {
+          const formattedUsers = (data.users as any[]).map((user) => ({
+            id: user.uid,
+            name: user.email,
+            isAdmin: user.customClaims?.isAdmin || false,
+            lastSignIn: user.metadata.lastSignInTime,
+          }));
+
+          setAllUsers(formattedUsers);
+          console.log(data)
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) getAllUsers();
+    });
+
+    return () => unsubscribe(); // cleanup
+  }, []);
 
   return (
     <div className="max-w-4xl mx-auto mt-12 px-4">

@@ -5,22 +5,19 @@ import { initializeAuthListener } from "./store/FirebaseAuth";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { getToken } from "./config/tokens";
+import { auth } from "./config/firebase";
 
 const App = () => {
   const dispatch = useDispatch();
 
-  axios.interceptors.request.use(
-    async (config) => {
-      const token = await getToken();
-      if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
-      }
-      return config;
-    },
-    (error) => {
-      return Promise.reject(error);
-    }
-  );
+  axios.interceptors.request.use(async (config) => {
+  const user = auth.currentUser;
+  if (user) {
+    const token = await user.getIdToken();
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
 
   useEffect(() => {
     initializeAuthListener(dispatch);
