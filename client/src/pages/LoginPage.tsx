@@ -175,7 +175,7 @@ const LoginPage = () => {
         <img
           src={loginImg}
           alt=""
-          className={`w-[460px] min-h-[450px] object-cover object-center ${
+          className={`w-[460px] min-h-[450px] object-cover object-center hidden sm:block ${
             signUp ? "lg:-translate-x-[100%]" : ""
           } duration-500`}
         />
