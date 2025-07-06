@@ -4,9 +4,7 @@ import { useNavigate } from "react-router-dom";
 import loginImg from "../assets/login.svg";
 import { auth } from "../config/firebase";
 import {
-  createUserWithEmailAndPassword,
   signInWithCustomToken,
-  signInWithEmailAndPassword,
 } from "firebase/auth";
 import axios from "axios";
 

@@ -23,9 +23,12 @@ const AllUsers = () => {
   const makeAdmin = async () => {
     try {
       const { data } = await axios.post(
-        import.meta.env.VITE_BACKEND_URL + "/api/admin/make-user-admin"
+        import.meta.env.VITE_BACKEND_URL + "/api/admin/make-user-admin",{
+          uid: openOptionId
+        }
       );
-      console.log(data);
+      data.success && window.location.reload()
+
     } catch (err) {
       console.log(err);
     }
@@ -61,7 +64,6 @@ const AllUsers = () => {
           }));
 
           setAllUsers(formattedUsers);
-          console.log(data)
         }
       } catch (err) {
         console.log(err);
